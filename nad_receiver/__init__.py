@@ -311,7 +311,7 @@ class NADC338Client(object):
          'Main.Mute' (bool) and 'Main.Source' (str).
         """
         return self._state
-        
+
     def _parse_data(self, data):
         key, value = data.split('=')
 
@@ -320,8 +320,10 @@ class NADC338Client(object):
 
         old_value = self._state.get(key)
 
+        _LOGGER.debug("[NADC338Client]State checker %s => %s", key, self._state)
+
         if value != old_value:
-            _LOGGER.debug("State changed %s=%s", key, value)
+            _LOGGER.debug("[NADC338Client]State changed %s=%s", key, value)
             
             self._state[key] = value
 
