@@ -303,6 +303,15 @@ class NADC338Client(object):
         self._state_changed_cb(self._state)
         self._state_changed_waiter = None
 
+    async def status(self):
+        """
+        Return the status of the device.
+
+        Returns a dictionary with keys 'Main.Volume' (int -80-0) , 'Main.Power' (bool),
+         'Main.Mute' (bool) and 'Main.Source' (str).
+        """
+        return self._state
+        
     def _parse_data(self, data):
         key, value = data.split('=')
 
