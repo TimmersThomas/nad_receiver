@@ -13,9 +13,11 @@ import serial  # pylint: disable=import-error
 import threading
 import time
 import telnetlib
+import logging
 
 DEFAULT_TIMEOUT = 1
 
+_LOGGER = logging.getLogger(__name__)
 
 class NADReceiver(object):
     """NAD receiver."""
