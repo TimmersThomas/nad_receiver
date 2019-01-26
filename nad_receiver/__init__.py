@@ -316,6 +316,7 @@ class NADC338Client(object):
 
     def _parse_data(self, data):
         key, value = data.split('=')
+        _LOGGER.debug("[NADC338Client] PARSE DATA %s=%s", key, value)
 
         if 'type' in nad_commands.C338_CMDS[key]:
             value = nad_commands.C338_CMDS[key]['type'](value)
@@ -335,6 +336,7 @@ class NADC338Client(object):
 
     async def _connection_loop(self):
         try:
+            _LOGGER.debug("[NADC338Client]Open connection %s=%s", self._host, self.PORT)
             self._reader, self._writer = await asyncio.open_connection(self._host, self.PORT, loop=self._loop)
             self.exec_command('Main', '?')
 
