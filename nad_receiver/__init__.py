@@ -275,7 +275,7 @@ class NADReceiverTCP(object):
         return list(self.SOURCES.keys())
 
 class NADC338Client(object):
-    AVAILABLE_SOURCES = nad_commands.C338_CMDS[CMD_SOURCE]['values']
+    AVAILABLE_SOURCES = nad_commands.C338_CMDS[nad_commands.CMD_SOURCE]['values']
 
     PORT = 30001
 
